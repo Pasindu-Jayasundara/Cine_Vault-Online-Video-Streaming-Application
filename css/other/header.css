@@ -1,0 +1,7 @@
+.no_content{
+min-height: 70vh;
+}
+
+::-webkit-scrollbar{
+    width:0;
+}

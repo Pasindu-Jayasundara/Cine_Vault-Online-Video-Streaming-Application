@@ -1,0 +1,31 @@
+.blackBG::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.077);
+    width: 100%;
+    height: 100vh;
+}
+
+.he {
+    position: absolute;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.429);
+    color: white;
+}
+
+.con {
+    position: absolute;
+    margin-top: 20%;
+    margin-left: 5%;
+    width: 90%;
+    padding: 10px;
+    color: whitesmoke;
+    z-index: 7;
+    background: rgba(0, 0, 0, 0.785);
+    text-align: center;
+    border-radius: 5px;
+    padding: 35px;
+}
+

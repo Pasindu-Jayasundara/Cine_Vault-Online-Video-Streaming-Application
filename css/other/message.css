@@ -1,0 +1,19 @@
+.b1 {
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: inset 8px 8px 16px #bebebe, inset -8px -8px 16px #ffffff;
+    height: 82vh;
+}
+
+.b2 {
+    border-radius: 8px;
+    background: linear-gradient(145deg, #ffffff, #e6dddd);
+    box-shadow: 5px 5px 10px #d9d0d0,
+        -5px -5px 10px #ffffff;
+}
+
+.c:hover{
+    background-color: rgba(110, 224, 199, 0.623);
+    border-radius: 8px;
+    transition-duration: .5s;
+}

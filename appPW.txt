@@ -1,0 +1,147 @@
+xfhjfnfbdhczjkpb
+1221722
+
+
+require "../connection/SMTP.php";
+require "../connection/PHPMailer.php";
+require "../connection/Exception.php";
+require "../connection/OAuth.php";
+require "../connection/POP3.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+
+$mail = new PHPMailer;
+$mail->IsSMTP();
+$mail->Host = 'smtp.gmail.com';
+$mail->SMTPAuth = true;
+$mail->Username = '**************************************';
+$mail->Password = '*************************';
+$mail->SMTPSecure = 'ssl';
+$mail->Port = 465;
+$mail->setFrom('*************************', 'Reset Password');
+$mail->addReplyTo('************************', 'Reset Password');
+$mail->addAddress($e);
+$mail->isHTML(true);
+$mail->Subject = '****************************';
+$bodyContent = '**************************';
+$bodyContent .= '******************';
+$mail->Body    = $bodyContent;
+
+if($mail->send()){
+    echo("1");
+}else{
+    echo("2");
+}
+
+cinevaultborwse@gmail.com
+xfhjfnfbdhczjkpb
+
+
+
+
+$file_path = "/path/to/file/example.txt";
+
+if (file_exists($file_path)) {
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename="'.basename($file_path).'"');
+    header('Content-Transfer-Encoding: binary');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate');
+    header('Pragma: public');
+    header('Content-Length: ' . filesize($file_path));
+    ob_clean();
+    flush();
+    readfile($file_path);
+    exit;
+}
+    // Open the file and read it in chunks, updating the progress bar as we go
+    $handle = fopen($file_path, 'rb');
+    $chunk_size = 1024; // 1KB chunk size
+    $bytes_sent = 0;
+
+    while (!feof($handle) && $bytes_sent < $file_size) {
+        $chunk = fread($handle, $chunk_size);
+        echo $chunk;
+        $bytes_sent += strlen($chunk);
+
+        // Calculate progress percentage and output HTML for progress bar
+        $progress = min(100, round($bytes_sent / $file_size * 100));
+        echo '<script>document.getElementById("progress-bar").value = ' . $progress . ';</script>';
+        echo str_pad('', 1024); // Ensure output is sent to the browser immediately
+    }
+
+    fclose($handle);
+    exit;
+}
+
+In this example, the code first checks if the file exists on the server. If it does, the script sends headers to the client's browser to indicate that 
+a file download is about to take place. The readfile() function then streams the contents of the file to the browser, causing the file to be downloaded.
+
+Note that the headers are necessary to tell the browser how to handle the downloaded file. The Content-Disposition header specifies the filename that 
+the downloaded file should have. The Content-Length header tells the browser the size of the file, which allows the browser to display a progress bar 
+during the download. The ob_clean() and flush() functions are used to clear the output buffer and flush any pending output to the browser before sending 
+the file contents.
+
+In this example, we calculate the progress percentage by dividing $bytes_sent by $file_size and multiplying by 100. We then use this value to update the 
+value attribute of an HTML progress element with an id of progress-bar. Note that the JavaScript code is enclosed in a <script> tag to ensure that it is 
+executed by the browser rather than being treated as output.
+
+We also include the str_pad() function call after outputting each chunk of data to the browser. This ensures that the output is immediately sent to the 
+browser, rather than being buffered and sent all at once at the end of the script.
+
+Note that the progress bar HTML code is not shown in this example as it will depend on the specific method and library used to display the progress bar.
+
+
+
+
+
+<?php
+$video_path = $data["url"];
+
+            // Get the file status
+            $file_status = @stat($video_path);
+
+            if ($file_status === false) {
+                $last_error = error_get_last();
+                echo 'Error: ' . $last_error['message'];
+            }else {
+                // Check the file permissions
+                if (($file_status['mode'] & 0x0080) === 0x0080) {// file is readable
+               
+                    echo($video_path);
+    
+                } else {
+                    echo ('1');
+                }
+            }
+
+if (($file_status['mode'] & 0x0020) === 0x0020) {
+    echo 'File is writable.';
+} else {
+    echo 'File is not writable.';
+}
+?>
+
+
+
+function downloadFile() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'download.php', true);
+    xhr.responseType = 'blob';
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            // Create a new anchor element and download the file
+            var a = document.createElement('a');
+            var url = window.URL.createObjectURL(xhr.response);
+            a.href = url;
+            a.download = 'filename.mp4';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    };
+    xhr.send();
+}

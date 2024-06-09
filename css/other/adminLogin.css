@@ -1,0 +1,18 @@
+* {
+    color: white;
+}
+
+.bgImage {
+    background-image: url("../../adminImages/login/adminlogin.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.formDiv {
+    background-color: rgba(0, 0, 0, 0.579);
+}
+
+.fp:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

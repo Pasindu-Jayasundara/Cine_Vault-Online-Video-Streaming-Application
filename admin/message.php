@@ -3,7 +3,7 @@ session_start();
 require "../connection/connection.php";
 
 if (!empty($_SESSION["admin"])) {
-    
+
     $shop_rs = Database::search("SELECT * FROM `shop`");
     $shop_data = $shop_rs->fetch_assoc();
 
@@ -49,7 +49,7 @@ if (!empty($_SESSION["admin"])) {
                                     <div class="accordion-body w-25 b2">
                                         <div style="height: 90%;">
 
-                                            <div class="ui relaxed divided list" id="msgList">                                                
+                                            <div class="ui relaxed divided list" id="msgList">
                                             </div>
 
                                         </div>

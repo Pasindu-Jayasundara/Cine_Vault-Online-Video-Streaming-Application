@@ -79,7 +79,7 @@ if (!empty($_SESSION["admin"])) {
                         if (move_uploaded_file($img["tmp_name"], $url)) {
 
                             Database::iud("INSERT INTO `movie`(`name`,`date_time`,`description`,`price`,`code`,`status_id`,`quality_quality_id`,`year_year_id`,`language_language_id`,`country_country_id`,`rating`,`director`)
-                            VALUES('" . $name . "','" . $releasedDate . "','" . $description . "','" . $price . "','" . $code . "','1','" . $quality . "','" . $year . "','" . $language . "','" . $country . "','".$rating."','" . $director . "')");
+                            VALUES('" . $name . "','" . $releasedDate . "','" . $description . "','" . $price . "','" . $code . "','1','" . $quality . "','" . $year . "','" . $language . "','" . $country . "','" . $rating . "','" . $director . "')");
 
                             $movie_id = Database::$db_connection->insert_id;
 
@@ -112,7 +112,7 @@ if (!empty($_SESSION["admin"])) {
                 if (move_uploaded_file($img["tmp_name"], $url)) {
 
                     Database::iud("INSERT INTO `tv_series`(`name`,`date_time`,`description`,`price`,`code`,`status_id`,`year_year_id`,`quality_quality_id`,`language_language_id`,`country_country_id`,`rating`,`director`) 
-                    VALUES('" . $name . "','" . $releasedDate . "','" . $description . "','" . $price . "','" . $code . "','1','" . $year . "','" . $quality . "','" . $language . "','" . $country . "','".$rating."','" . $director . "')");
+                    VALUES('" . $name . "','" . $releasedDate . "','" . $description . "','" . $price . "','" . $code . "','1','" . $year . "','" . $quality . "','" . $language . "','" . $country . "','" . $rating . "','" . $director . "')");
 
                     $tv_id = Database::$db_connection->insert_id;
 
@@ -140,3 +140,5 @@ if (!empty($_SESSION["admin"])) {
 } else {
     header("Location:index.php");
 }
+
+?>

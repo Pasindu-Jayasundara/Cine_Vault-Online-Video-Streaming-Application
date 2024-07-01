@@ -2,9 +2,9 @@
 session_start();
 require "../connection/connection.php";
 
-if(!empty($_POST["txt"])){
+if (!empty($_POST["txt"])) {
 
-    if(!empty($_SESSION["user"])){
+    if (!empty($_SESSION["user"])) {
 
         $user_id = $_SESSION["user"]["id"];
 
@@ -18,16 +18,14 @@ if(!empty($_POST["txt"])){
         $today = $date->format("Y-m-d H:i:s");
 
         Database::iud("INSERT INTO `comment`(`comment`,`date_time`,`type_id`,`user_id`,`code`) 
-        VALUES('".$txt."','".$today."','".$type."','".$user_id."','".$code."')");
+        VALUES('" . $txt . "','" . $today . "','" . $type . "','" . $user_id . "','" . $code . "')");
 
-        echo("1");
-
-    }else{
-        echo("2");
+        echo ("1");
+    } else {
+        echo ("2");
     }
-
-}else{
-    echo("Type Your Comment First");
+} else {
+    echo ("Type Your Comment First");
 }
 
 ?>

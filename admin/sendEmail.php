@@ -35,10 +35,10 @@ $mail->Body = $bodyContent;
 
 if ($mail->send()) {
     // echo("Credentials Emailed Successfully");
-    echo("1");
+    echo ("1");
 } else {
     // echo("Credentials Email Process Faild");
-    echo("2");
+    echo ("2");
 }
 
 unset($_SESSION["credential"]);

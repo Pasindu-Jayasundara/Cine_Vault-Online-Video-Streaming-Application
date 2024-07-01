@@ -10,17 +10,17 @@ require "../connection/POP3.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-if(!empty($_POST["forgot_password_email"])){
+if (!empty($_POST["forgot_password_email"])) {
 
     $rs = Database::search("SELECT * FROM `admin_email` INNER JOIN `admin` ON `admin`.`admin_id`=`admin_email`.`admin_admin_id` 
-    WHERE `admin_email`.`email`='".$_POST["forgot_password_email"]."' AND `admin_email`.`admin_email_status_id`='1'");
+    WHERE `admin_email`.`email`='" . $_POST["forgot_password_email"] . "' AND `admin_email`.`admin_email_status_id`='1'");
 
     $num = $rs->num_rows;
 
-    if($num == 1){
+    if ($num == 1) {
 
         $rs2 = Database::search("SELECT `admin`.`admin_id` FROM `admin` INNER JOIN `admin_email` ON `admin`.`admin_id`=`admin_email`.`admin_admin_id` 
-        WHERE `admin_email`.`email`='".$_POST["forgot_password_email"]."' AND `admin_email`.`admin_email_status_id`='1'");
+        WHERE `admin_email`.`email`='" . $_POST["forgot_password_email"] . "' AND `admin_email`.`admin_email_status_id`='1'");
 
         $data = $rs2->fetch_assoc();
 
@@ -39,24 +39,21 @@ if(!empty($_POST["forgot_password_email"])){
         $mail->addAddress($_POST["forgot_password_email"]);
         $mail->isHTML(true);
         $mail->Subject = 'CineVault Forgot Password Email Verification';
-        $bodyContent = "Your Verification Code is : '".$tmp_code."'";
+        $bodyContent = "Your Verification Code is : '" . $tmp_code . "'";
         $mail->Body    = $bodyContent;
 
-        if($mail->send()){
-            Database::iud("UPDATE `admin` SET `admin`.`tmp_code`='".$tmp_code."' WHERE `admin`.`admin_id`='".$data["admin_id"]."'");
+        if ($mail->send()) {
+            Database::iud("UPDATE `admin` SET `admin`.`tmp_code`='" . $tmp_code . "' WHERE `admin`.`admin_id`='" . $data["admin_id"] . "'");
             $_SESSION["id"] = $data["admin_id"];
-            echo("5");
-
-        }else{
-            echo("2");
+            echo ("5");
+        } else {
+            echo ("2");
         }
-
-    }else{
-        echo("1");
+    } else {
+        echo ("1");
     }
-
-}else{
-    echo("3");
+} else {
+    echo ("3");
 }
 
 ?>

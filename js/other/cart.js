@@ -15,20 +15,6 @@ function all() {
     request.send();
 }
 
-// function movieDescription(movie_code) {
-
-//     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip' + movie_code + '"]');
-//     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-
-// }
-
-// function tv_seriesDescription(tv_series_code) {
-
-//     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip' + tv_series_code + '"]');
-//     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-
-// }
-
 function singleContentLoad(x, code) {
 
     var movie;
@@ -47,7 +33,6 @@ function singleContentLoad(x, code) {
 }
 
 var total_price = 0;
-// var obj = {};
 var arr = [];
 
 function bookmarkAddToCheckList(code, type) {
@@ -63,7 +48,6 @@ function bookmarkAddToCheckList(code, type) {
             var responseJsonText = request.responseText;
             var jsonObj = JSON.parse(responseJsonText);
 
-            // if ("code" + jsonObj.code in obj) {
             if (arr.includes(jsonObj.code)) {
 
                 var tr = document.getElementById("id" + jsonObj.code);
@@ -73,7 +57,6 @@ function bookmarkAddToCheckList(code, type) {
                 document.getElementById("totaltr").innerHTML = total_price;
 
 
-                // delete obj["code" + jsonObj.code];
                 arr.splice(arr.indexOf(jsonObj.code), 1);
 
                 document.getElementById("cartplusicon" + jsonObj.code).classList.replace("bi-bookmark-check-fill", "bi-bookmark-plus-fill");
@@ -103,11 +86,9 @@ function bookmarkAddToCheckList(code, type) {
                 document.getElementById("cartplusicon" + jsonObj.code).classList.replace("bi-bookmark-plus-fill", "bi-bookmark-check-fill");
                 document.getElementById("cartplusicon" + jsonObj.code).classList.replace("text-warning", "greencolor");
 
-                // obj["code" + jsonObj.code] = jsonObj.code;
                 arr.push(jsonObj.code);
             }
 
-            // alert(obj);
         }
     };
 
@@ -205,7 +186,6 @@ function pay() {
 
                         // var jsonObj = JSON.stringify(obj);
                         addToDatabase(jsObj);
-                        // alert("okword");
                         // Note: validate the payment and show success or failure page to the customer
                     };
 
@@ -273,11 +253,7 @@ function addToDatabase(jsObj) {
         if (request.readyState == 4 & request.status == 200) {
 
             var response = request.responseText;
-            // if(response==1){
             window.location.href = "receipt.php?id=" + parseInt(response);
-            // }else{
-            // alert(response);
-            // }
         }
     };
 

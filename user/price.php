@@ -64,10 +64,13 @@ $shop_data = $shop_rs->fetch_assoc();
                                 $subscription_rs = Database::search("SELECT * FROM `subscription` WHERE `subscription`.`status_id`='1'");
                                 $subscription_num = $subscription_rs->num_rows;
 
-                                $active_rs = Database::search("SELECT * FROM `user_subscription` WHERE `user_subscription`.`user_id`='" . $_SESSION["user"]["id"] . "' 
+                                if (isset($_SESSION["user"])) {
+
+                                    $active_rs = Database::search("SELECT * FROM `user_subscription` WHERE `user_subscription`.`user_id`='" . $_SESSION["user"]["id"] . "' 
                                 AND `user_subscription`.`status_id`='1'");
 
-                                $active_data = $active_rs->fetch_assoc();
+                                    $active_data = $active_rs->fetch_assoc();
+                                }
 
                                 for ($x = 0; $x < $subscription_num; $x++) {
                                     $subscription_data = $subscription_rs->fetch_assoc();
@@ -76,7 +79,7 @@ $shop_data = $shop_rs->fetch_assoc();
                                     $time_period_data = $time_period_rs->fetch_assoc();
 
                                     $active_sub;
-                                    if ($active_data["subscription_id"] == $subscription_data["id"]) {
+                                    if (isset($active_data) && $active_data["subscription_id"] == $subscription_data["id"]) {
                                         $active_sub = true;
                                     } else {
                                         $active_sub = false;

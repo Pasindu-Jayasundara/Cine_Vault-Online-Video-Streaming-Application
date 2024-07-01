@@ -17,7 +17,7 @@ if (!empty($_SESSION["admin"])) {
 
         <link rel="stylesheet" href="../css/bootstrap/bootstrap.css" />
         <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
         <link rel="stylesheet" href="../css/other/sidebars.css">
 
         <link rel="icon" href="<?php echo $shop_data["logo_link"]; ?>" />
@@ -143,17 +143,17 @@ if (!empty($_SESSION["admin"])) {
                         <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <?php
                             $admin_img_rs = Database::search("SELECT * FROM `admin_profile_image` WHERE `admin_profile_image`.`status_id`='1' 
-                            AND `admin_profile_image`.`admin_profile_img_id`='".$_SESSION["admin"]["admin_id"]."'");
+                            AND `admin_profile_image`.`admin_profile_img_id`='" . $_SESSION["admin"]["admin_id"] . "'");
 
-                            if($admin_img_rs->num_rows == 1){
+                            if ($admin_img_rs->num_rows == 1) {
                                 $admin_img_data = $admin_img_rs->fetch_assoc();
-                                ?>
+                            ?>
                                 <img src="<?php echo $admin_img_data["link"]; ?>" alt="" width="32" height="32" class="rounded-circle me-2">
-                                <?php
-                            }else{
-                                ?>
+                            <?php
+                            } else {
+                            ?>
                                 <img src="../admin_profile_image/admin.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                                <?php
+                            <?php
                             }
                             ?>
                             <strong><?php echo $_SESSION["admin"]["first_name"] . " " . $_SESSION["admin"]["last_name"]; ?></strong>

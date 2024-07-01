@@ -107,8 +107,8 @@ if (!empty($_SESSION["admin"])) {
                 <p style="color:red; text-align:center; margin-top:10px; margin: bottom 10px; ">Please Insert User Name !</p>
             <?php
             }
-        } 
-        
+        }
+
 
         if ($num > 0) { //data availiable
 

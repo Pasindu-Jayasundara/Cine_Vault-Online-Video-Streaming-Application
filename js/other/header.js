@@ -21,7 +21,6 @@ function login() {
             if (response == "1") {
 
                 window.location.reload();
-                // alert(response);
 
             } else {
                 alert(response);
@@ -110,11 +109,9 @@ function updateEmail() {
 
             if (request.responseText == "1") {
                 alert("Email Update Success");
-                // bm.hide();
                 window.location.reload();
             } else {
                 alert(request.responseText);
-                // bm.hide();
             }
         }
     };
@@ -192,7 +189,6 @@ function updatePassword() {
                 window.location.reload();
             } else {
                 alert(request.responseText);
-                // bm.hide();
             }
         }
     };

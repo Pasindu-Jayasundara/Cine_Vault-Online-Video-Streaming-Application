@@ -26,7 +26,6 @@ function updateStoreDetails() {
     var logo = document.getElementById("logonew");
 
     if (name.trim() == "" && email.trim() == "" && line_1.trim() == "" && line_2.trim() == "" && mobile.trim() == "") {
-        // alert("Fill THe Details");
         var msg = "Fill THe Details";
         var color = "bg-warning";
 

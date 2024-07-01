@@ -54,7 +54,7 @@ if (!empty($_SESSION["admin"])) {
                             // echo('Invalid Logo File Format');
                             echo ('3');
                         }
-                    }else if($_POST["img"] == 1){
+                    } else if ($_POST["img"] == 1) {
 
                         Database::iud("UPDATE `shop` SET `name`='" . $_POST["name"] . "',`email`='" . $_POST["email"] . "',`mobile`='" . $_POST["mobile"] . "',`line_1`='" . $_POST["line_1"] . "',
                         `line_2`='" . $_POST["line_2"] . "'");
@@ -69,7 +69,6 @@ if (!empty($_SESSION["admin"])) {
 
                         // echo("Update Process Success");
                         echo ("1");
-
                     }
                 } else {
                     // echo("In-valid Mobile Number");
@@ -90,3 +89,5 @@ if (!empty($_SESSION["admin"])) {
 } else {
     header("Location:index.php");
 }
+
+?>

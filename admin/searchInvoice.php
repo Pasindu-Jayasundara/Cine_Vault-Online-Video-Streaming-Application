@@ -13,7 +13,7 @@ if (!empty($_SESSION["admin"])) {
         FROM `user`
         INNER JOIN `user_email` ON `user`.`id`=`user_email`.`user_id`
         INNER JOIN `purchase_history` ON `user`.`id`=`purchase_history`.`user_id`
-        WHERE `purchase_history`.`purchase_history_id`='".$invoice_id."' AND `user_email`.`status_id`='1'");
+        WHERE `purchase_history`.`purchase_history_id`='" . $invoice_id . "' AND `user_email`.`status_id`='1'");
 
         if ($rs->num_rows == 1) {
             $num = 1;
@@ -52,7 +52,7 @@ if (!empty($_SESSION["admin"])) {
                 ?>
 
                     <tr>
-                        <td><?php echo ($x+1); ?></td>
+                        <td><?php echo ($x + 1); ?></td>
                         <td><?php echo ($data["email"]); ?></td>
                         <td><?php echo ($data["date_time"]); ?></td>
                         <td>

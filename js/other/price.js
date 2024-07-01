@@ -34,7 +34,6 @@ function subscription(plan) {
                     crateHash(plan);
                 }
             } else if (response == "4") {
-                // alert("Please LogIn or SignUp First..!");
                 var msg = "Please LogIn or SignUp First..!";
                 var color = "bg-warning";
                 toast(msg, color);
@@ -71,7 +70,6 @@ function buySubscription(obj) {
     payhere.onCompleted = function onCompleted(orderId) {
         console.log("Payment completed. OrderID:" + orderId);
 
-        // var jsonObj = JSON.stringify(obj);
         addToDatabase(obj);
         // Note: validate the payment and show success or failure page to the customer
     };
@@ -115,9 +113,7 @@ function buySubscription(obj) {
     };
 
     // Show the payhere.js popup, when "PayHere Pay" is clicked
-    // document.getElementById('payhere-payment').onclick = function(e) {
     payhere.startPayment(payment);
-    // };
 }
 
 

@@ -120,19 +120,15 @@ if (!empty($_SESSION["admin"])) {
                         echo ("1");
                     }
 
-                    
-                        
 
-                    $admin_rs = Database::search("SELECT * FROM `admin` WHERE `admin`.`admin_id`='".$_SESSION["admin"]["admin_id"]."' 
+
+
+                    $admin_rs = Database::search("SELECT * FROM `admin` WHERE `admin`.`admin_id`='" . $_SESSION["admin"]["admin_id"] . "' 
                     AND `admin`.`admin_status_id`='1'");
 
                     $admin_data = $admin_rs->fetch_assoc();
 
                     $_SESSION["admin"] = $admin_data;
-
-
-
-
                 } else {
                     // echo("In-valid Mobile Number");
                     echo ("4");
@@ -152,4 +148,5 @@ if (!empty($_SESSION["admin"])) {
 } else {
     header("Location:index.php");
 }
+
 ?>

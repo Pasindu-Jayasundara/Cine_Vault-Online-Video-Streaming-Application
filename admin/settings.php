@@ -212,8 +212,8 @@ if (!empty($_SESSION["admin"])) {
                                                                         <option value="<?php echo $city_data["id"]; ?>" <?php
                                                                                                                         if ($address_data["city_id"] == $city_data["id"]) {
                                                                                                                         ?> selected <?php
-                                                                                                                        }
-                                                                                                    ?>><?php echo $city_data["city"]; ?></option>
+                                                                                                                                }
+                                                                                                                                    ?>><?php echo $city_data["city"]; ?></option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -243,9 +243,9 @@ if (!empty($_SESSION["admin"])) {
                                     <div class="ms-4 d-flex flex-column">
                                         <p class="">Change Password</p>
                                         <div class="d-flex flex-row gap-3 col-10">
-                                            <input type="password" placeholder="Old Password" class="form-control" id="oldPassword"/>
-                                            <input type="password" placeholder="New Password" class="form-control" id="newPassword"/>
-                                            <input type="password" placeholder="Re-Type New Password" class="form-control" id="reNewPassword"/>
+                                            <input type="password" placeholder="Old Password" class="form-control" id="oldPassword" />
+                                            <input type="password" placeholder="New Password" class="form-control" id="newPassword" />
+                                            <input type="password" placeholder="Re-Type New Password" class="form-control" id="reNewPassword" />
                                             <span class="btn btn-success d-grid" onclick="updatePassword();">Update</span>
                                         </div>
                                         <p class="mt-5">Forgot Password</p>

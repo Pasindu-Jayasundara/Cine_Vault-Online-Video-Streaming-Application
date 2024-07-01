@@ -521,9 +521,12 @@ if (!empty($_GET["movie"]) && !empty($_GET["tv"]) && !empty($_GET["code"])) {
                                                 <div class="d-grid gap-3">
                                                     <div class="bg-light border rounded-3">
 
-                                                        <video width="100%" controls autoplay poster="<?php echo $img_data["link"]; ?>" id="movieSource">
+                                                        <iframe id="movieSource" width="100%" height="500" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                                        <!-- use below when video is in the project -->
+
+                                                        <!-- <video width="100%" controls autoplay poster="<?php echo $img_data["link"]; ?>" id="movieSource">
                                                             <source src="" type="">
-                                                        </video>
+                                                        </video> -->
 
                                                     </div>
                                                 </div>
@@ -538,9 +541,13 @@ if (!empty($_GET["movie"]) && !empty($_GET["tv"]) && !empty($_GET["code"])) {
                                                 <div class="d-grid gap-3">
                                                     <div class="bg-light border rounded-3">
 
-                                                        <video width="100%" controls autoplay id="epi" poster="<?php echo $img_data["link"]; ?>">
-                                                            <source src="" type="">
-                                                        </video>
+
+                                                        <iframe id="epi" width="100%" height="500" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                                                        <!-- use below when video is in the project -->
+                                                        <!-- <video width="100%" controls autoplay id="epi"  poster="<?php echo $img_data["link"]; ?>">
+                                                            <source src="" type="" >
+                                                        </video> -->
 
                                                     </div>
                                                 </div>

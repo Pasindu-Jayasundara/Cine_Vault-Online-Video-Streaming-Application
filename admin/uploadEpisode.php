@@ -68,7 +68,7 @@ if (!empty($_SESSION["admin"])) {
                                         if ($epi_rs->num_rows == 0) { //episodes not availiable
 
                                             Database::iud("INSERT INTO `episode`(`ep_number`,`tv_series_id`,`date_time`,`url`,`name`,`length`,`status_id`,`rating`) 
-                                            VALUES('1','" . $tv_id . "','" . $today . "','" . $url . "','" . $name . "','" . $length . "','1','".$rating."')");
+                                            VALUES('1','" . $tv_id . "','" . $today . "','" . $url . "','" . $name . "','" . $length . "','1','" . $rating . "')");
 
                                             // echo("Successfully Completed");
                                             echo ("1");
@@ -81,7 +81,7 @@ if (!empty($_SESSION["admin"])) {
                                             $ep_number = intval($result_data["ep_number"]) + 1;
 
                                             Database::iud("INSERT INTO `episode`(`ep_number`,`tv_series_id`,`date_time`,`url`,`name`,`length`,`status_id`,`rating`) 
-                                            VALUES('" . $ep_number . "','" . $tv_id . "','" . $today . "','" . $url . "','" . $name . "','" . $length . "','1','".$rating."')");
+                                            VALUES('" . $ep_number . "','" . $tv_id . "','" . $today . "','" . $url . "','" . $name . "','" . $length . "','1','" . $rating . "')");
 
                                             // echo("Successfully Completed");
                                             echo ("1");
@@ -124,4 +124,5 @@ if (!empty($_SESSION["admin"])) {
 } else {
     header("Location:index.php");
 }
+
 ?>

@@ -10,14 +10,14 @@ require "../connection/POP3.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-if(!empty($_SESSION["admin"])){
+if (!empty($_SESSION["admin"])) {
 
     $rs = Database::search("SELECT * FROM `admin_email`  
-    WHERE `admin_email`.`admin_admin_id`='".$_SESSION["admin"]["admin_id"]."' AND `admin_email`.`admin_email_status_id`='1'");
+    WHERE `admin_email`.`admin_admin_id`='" . $_SESSION["admin"]["admin_id"] . "' AND `admin_email`.`admin_email_status_id`='1'");
 
     $num = $rs->num_rows;
 
-    if($num == 1){
+    if ($num == 1) {
 
         $data = $rs->fetch_assoc();
 
@@ -36,25 +36,22 @@ if(!empty($_SESSION["admin"])){
         $mail->addAddress($data["email"]);
         $mail->isHTML(true);
         $mail->Subject = 'CineVault Forgot Password Email Verification';
-        $bodyContent = "Your Verification Password is : '".$tmp_code."'";
+        $bodyContent = "Your Verification Password is : '" . $tmp_code . "'";
         $mail->Body    = $bodyContent;
 
-        if($mail->send()){
-            Database::iud("UPDATE `admin` SET `admin`.`password`='".$tmp_code."' WHERE `admin`.`admin_id`='".$_SESSION["admin"]["admin_id"]."' 
+        if ($mail->send()) {
+            Database::iud("UPDATE `admin` SET `admin`.`password`='" . $tmp_code . "' WHERE `admin`.`admin_id`='" . $_SESSION["admin"]["admin_id"] . "' 
             AND `admin`.`admin_status_id`='1'");
 
-            echo("1");
-
-        }else{
-            echo("2");
+            echo ("1");
+        } else {
+            echo ("2");
         }
-
-    }else{
-        echo("3");
+    } else {
+        echo ("3");
         // couldnt find the email
     }
-
-}else{
+} else {
     header("Location:index.php");
 }
 

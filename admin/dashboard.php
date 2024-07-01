@@ -46,15 +46,15 @@ if (!empty($_SESSION["admin"])) {
 
             <div class="col-10 vh-100" style="overflow-y: scroll; overflow-x: hidden;">
                 <div class="row mb-4">
+                    <?php
+                    $available_year_rs = Database::search("SELECT * FROM `summary_year`");
+                    if ($available_year_rs->num_rows > 0) {
 
-                    <div class="d-flex">
-                        <p class="fw-bold" style="margin-top: 4%; margin-bottom: 0%; z-index: 5;"><?php echo $shop_data["name"]; ?> Performance</p>
-                        <div class="col-md-2 ms-4" style="margin-top: 3.5%; margin-bottom: 0%; z-index: 5;">
-                            <?php
-                            $available_year_rs = Database::search("SELECT * FROM `summary_year`");
-                            if ($available_year_rs->num_rows > 0) {
+                    ?>
+                        <div class="d-flex">
+                            <p class="fw-bold" style="margin-top: 4%; margin-bottom: 0%; z-index: 5;"><?php echo $shop_data["name"]; ?> Performance</p>
+                            <div class="col-md-2 ms-4" style="margin-top: 3.5%; margin-bottom: 0%; z-index: 5;">
 
-                            ?>
                                 <select class="form-select" id="selectYear" required onchange="loadChardData();">
                                     <?php
                                     for ($x = 0; $x < $available_year_rs->num_rows; $x++) {
@@ -69,14 +69,20 @@ if (!empty($_SESSION["admin"])) {
                                     }
                                     ?>
                                 </select>
-                            <?php
-                            }
-                            ?>
-                        </div>
-                    </div>
-                    <!-- chart div -->
-                    <div id="curve_chart" style="width: 80%; height: 500px; margin-top: -4%; margin-bottom: -2%; z-index: 1;"></div>
 
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                    <!-- chart div -->
+                    <?php
+                    if ($available_year_rs->num_rows > 0) {
+                    ?>
+                        <div id="curve_chart" style="width: 80%; height: 500px; margin-top: -4%; margin-bottom: -2%; z-index: 1;"></div>
+                    <?php
+                    }
+                    ?>
 
                     <!-- cards -->
                     <p class="fw-bold" style="margin-top: 4%; margin-bottom: 0%; z-index: 5;"><?php echo $shop_data["name"]; ?> Performance At :&nbsp;&nbsp;&nbsp; <span class="fw-normal"><?php echo $monthName . " / " . $this_year; ?></span></p>
@@ -193,10 +199,8 @@ if (!empty($_SESSION["admin"])) {
 
                     <div class="row row-cols-1 row-cols-md-3 g-4 d-flex justify-content-evenly">
 
-                        <div class="col">
-                            <label class="fs-4 mb-3">Heighest Rating Movie</label>
-                            <?php
-                            $h_r_m_rs = Database::search("SELECT *
+                        <?php
+                        $h_r_m_rs = Database::search("SELECT *
                             FROM `movie` INNER JOIN `movie_cover` ON `movie`.`id`=`movie_cover`.`movie_id`
                             WHERE `movie`.`status_id`='1' AND `movie_cover`.`status_id`='1' AND
                              `movie`.`rating` IN(
@@ -204,21 +208,9 @@ if (!empty($_SESSION["admin"])) {
                             FROM `movie`
                             WHERE `movie`.`status_id`='1')");
 
-                            $h_r_m_data = $h_r_m_rs->fetch_assoc();
+                        $h_r_m_data = $h_r_m_rs->fetch_assoc();
 
-                            ?>
-                            <div class="card h-100">
-                                <img src="<?PHP echo $h_r_m_data["link"]; ?>" class="card-img-top" style="height:100%" />
-                                <div class="card-body">
-                                    <h5 class="card-title">Ratings</h5>
-                                    <p class="card-text"><?PHP echo $h_r_m_data["rating"]; ?></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label class="fs-4 mb-3">Heighest Rating Tv-Series</label>
-                            <?php
-                            $h_r_tv_rs = Database::search("SELECT *
+                        $h_r_tv_rs = Database::search("SELECT *
                             FROM `tv_series` INNER JOIN `tv_series_cover` ON `tv_series`.`id`=`tv_series_cover`.`tv_series_id`
                             WHERE `tv_series`.`status_id`='1' AND `tv_series_cover`.`status_id`='1' AND
                              `tv_series`.`rating` IN(
@@ -226,18 +218,43 @@ if (!empty($_SESSION["admin"])) {
                             FROM `tv_series`
                             WHERE `tv_series`.`status_id`='1')");
 
-                            $h_r_tv_data = $h_r_tv_rs->fetch_assoc();
+                        $h_r_tv_data = $h_r_tv_rs->fetch_assoc();
 
-                            ?>
-                            <div class="card h-100">
-                                <img src="../images/k.jpg" class="card-img-top" style="height:100%" />
-                                <div class="card-body">
-                                    <h5 class="card-title">Ratings</h5>
-                                    <p class="card-text"><?PHP echo $h_r_tv_data["rating"]; ?></p>
+                        if ($movi_count_data["mc"] != 0 && $tv_count_data["tc"] != 0) {
+                            if ($h_r_m_data != null) {
+                        ?>
+
+                                <div class="col">
+                                    <label class="fs-4 mb-3">Heighest Rating Movie</label>
+
+                                    <div class="card h-100">
+                                        <img src="<?PHP echo $h_r_m_data["link"]; ?>" class="card-img-top" style="height:100%" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">Ratings</h5>
+                                            <p class="card-text"><?PHP echo $h_r_m_data["rating"]; ?></p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            <?php
+                            }
+                            if ($h_r_tv_data != null) {
+                            ?>
+                                <div class="col">
+                                    <label class="fs-4 mb-3">Heighest Rating Tv-Series</label>
 
+                                    <div class="card h-100">
+                                        <img src="<?PHP echo $h_r_tv_data["link"]; ?>" class="card-img-top" style="height:100%" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">Ratings</h5>
+                                            <p class="card-text"><?PHP echo $h_r_tv_data["rating"]; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                        <?php
+                            }
+                        }
+
+                        ?>
                     </div>
 
                 </div>

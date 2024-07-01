@@ -94,8 +94,6 @@ function changeStatus() {
 
                 if (response == 1) {
                     document.getElementById("reason").value = null;
-                    // window.location.reload();
-                    // window.location.href="http://localhost/assignments/e/admin/home.php";
 
                     var msg = "De-Activation Successful";
                     var color = "bg-success";
@@ -107,8 +105,6 @@ function changeStatus() {
                     toast(msg, color);
 
                 } else if (response == 3) {
-                    // window.location.reload();
-                    // window.location.href="http://localhost/assignments/e/admin/home.php";
 
                     var msg = "Re-Activation Successful";
                     var color = "bg-success";

@@ -28,11 +28,6 @@ function loadChardData() {
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
-                // var data = google.visualization.arrayToDataTable(
-                //     [
-                //         ['Month', 'Active Users', 'Basic Subscription', 'Pro Subscription', 'Primium Subscription', 'Monthly Income', 'Total Movies', 'Total Tv-Series'],
-                //     ]
-                // );
 
                 var data = new google.visualization.DataTable();
                 data.addColumn('string', 'Month');

@@ -11,6 +11,9 @@
 7) Settings
 8) Mobile Friendly design
 
+### Video
+
+https://github.com/Pasindu-Jayasundara/Cine_Vault-Online-Video-Streaming-Application/assets/158612501/78a93dcb-66fd-4971-b374-4f45198f69e4
 
 ### Ui/Ux Design
 
